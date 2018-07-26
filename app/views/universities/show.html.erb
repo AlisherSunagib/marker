@@ -1,0 +1,62 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><br/>Key:</strong>
+  <%= @university.key %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @university.name %>
+</p>
+
+<p>
+	<strong>МОП:</strong>
+
+	<%= link_to "ссылка", @university.mop.url(:original, false), target: :_blank %>
+	 
+</p>
+
+<p>
+	<strong>КЭД:</strong>
+	<%= link_to "ссылка", @university.ked.url(:original, false), target: :_blank  %>
+</p>
+<%= link_to 'Edit', edit_university_path(@university) %> |
+<%= link_to 'Back', universities_path %>
+
+<p>
+	<strong><br/><br/>Список зарегистрированных дисциплин</strong>
+</p>
+<% @disciplines = Discipline.where(["university = ?", @university.key]) %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Speciality</th>
+      <th>User</th>
+      <th>Силлабус</th>
+      <th>РУП</th>
+      <th>Estimation</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @disciplines.each do |discipline| %>
+      <tr>
+      	<%	@dis = Discipline.new	%>
+      	<%	@dis = discipline	%>
+        <td><%= @dis.name %></td>
+        <td><%= @dis.speciality %></td>
+        <td><%= @dis.user %></td>
+        <td><%= link_to "Силлабус", discipline.syllabus.url(:original, false) %></td>
+        <td><%= link_to "РУП", discipline.rup.url(:original, false) %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Добавить дисциплину', new_discipline_path %>
+
+

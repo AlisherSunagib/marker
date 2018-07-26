@@ -1,0 +1,77 @@
+<h1>Добавление оценки</h1>
+
+<%= form_with(model: @discipline, local: true) do |form| %>
+  <% if @discipline.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@discipline.errors.count, "error") %> prohibited this discipline from being saved:</h2>
+
+      <ul>
+      <% @discipline.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	<% @uni = University.new()
+    @uni = University.where(["key = ?", @discipline.university]).first%>
+
+    <% @spec = SpecialityPull.new()
+    @spec = SpecialityPull.where(["key = ?", @discipline.speciality]).first%>
+
+
+  <div class="field">
+    <%= form.label "ВУЗ" %>
+    <%=  @uni.name %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Специальность" %>
+    <%=  @spec.name  %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Дисциплина" %>
+    <%=  @discipline.name  %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Координатор" %>
+    <%=  @discipline.user  %>
+  </div>
+
+  <div class="field">
+    <%= form.label "МОП" %>
+    <%= link_to "МОП", @uni.mop.url(:original, false), target: :_blank %>
+  </div>
+
+  <div class="field">
+    <%= form.label "КЭД" %>
+    <%=  link_to "КЭД", @uni.ked.url(:original, false), target: :_blank  %>
+  </div>
+
+  <div class="field">
+    <%= form.label "СИЛАБУС" %>
+    <%=  link_to "Силлабус", @discipline.syllabus.url(:original, false), target: :_blank  %>
+  </div>
+
+  <div class="field">
+    <%= form.label "РУП" %>
+    <%=  link_to "РУП", @discipline.rup.url(:original, false), target: :_blank  %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Оценочный лист" %>
+    <%= link_to "Оценочный лист", @spec.ocen_list.url(:original, false), target: :_blank %>
+  </div>
+
+  <%= form.label "оценка" %>
+  <%= form.file_field :ocenka,   class: 'form-control' %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Show', @discipline %> |
+<%= link_to 'Back', disciplines_path %>

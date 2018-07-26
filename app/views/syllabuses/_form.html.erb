@@ -1,0 +1,36 @@
+<%= form_with(model: syllabus, local: true) do |form| %>
+  <% if syllabus.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(syllabus.errors.count, "error") %> prohibited this syllabus from being saved:</h2>
+
+      <ul>
+      <% syllabus.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :school %>
+    <%= form.text_field :school %>
+  </div>
+
+  <div class="field">
+    <%= form.label :university %>
+    <%= form.text_field :university %>
+  </div>
+
+  <div class="field">
+    <%= form.label :coordinator %>
+    <%= form.text_field :coordinator %>
+  </div>
+
+
+  <%= form.file_field :document %>
+  
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

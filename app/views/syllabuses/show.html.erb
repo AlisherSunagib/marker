@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>School:</strong>
+  <%= @syllabus.school %>
+</p>
+
+<p>
+  <strong>University:</strong>
+  <%= @syllabus.university %>
+</p>
+
+<p>
+  <strong>Coordinator:</strong>
+  <%= @syllabus.coordinator %>
+</p>
+
+<p>
+  <strong>document:</strong>
+  <%= @syllabus.document %>
+</p>
+<%= link_to 'Edit', edit_syllabus_path(@syllabus) %> |
+<%= link_to 'Back', syllabuses_path %>

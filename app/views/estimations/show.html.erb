@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @estimation.user %>
+</p>
+
+<p>
+  <strong>Discipline:</strong>
+  <%= @estimation.discipline %>
+</p>
+
+<p>
+  <strong>Speciality:</strong>
+  <%= @estimation.speciality %>
+</p>
+
+<p>
+  <strong>University:</strong>
+  <%= @estimation.university %>
+</p>
+
+<%= link_to 'Edit', edit_estimation_path(@estimation) %> |
+<%= link_to 'Back', estimations_path %>

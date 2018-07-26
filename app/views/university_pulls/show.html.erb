@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Key:</strong>
+  <%= @university_pull.key %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @university_pull.name %>
+</p>
+
+<%= link_to 'Edit', edit_university_pull_path(@university_pull) %> |
+<%= link_to 'Back', university_pulls_path %>

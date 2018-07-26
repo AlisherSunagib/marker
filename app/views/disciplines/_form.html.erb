@@ -1,0 +1,51 @@
+<%= form_with(model: discipline, local: true) do |form| %>
+  <% if discipline.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(discipline.errors.count, "error") %> prohibited this discipline from being saved:</h2>
+
+      <ul>
+      <% discipline.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= form.label "Почта координатора" %>
+    <%= current_user.email%>
+    <%= form.hidden_field :user,  class: 'form-control', value: current_user.email %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label "ВУЗ" %>
+    <%= current_user.workplace%>
+    <%= form.hidden_field :university,  class: 'form-control', value: current_user.workplace %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Название дисциплины" %>
+    <%= form.text_field :name,   class: 'form-control' %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label "Специальность" %>
+    <% @spec = SpecialityPull.all %>
+    <%= form.select :speciality, options_for_select(@spec.map { |spec| [spec.key] }) %>
+  </div>
+
+  
+
+  <%= form.label "syllabus" %>
+  <%= form.file_field :syllabus,   class: 'form-control' %>
+
+  <%= form.label "РУП" %>
+  <%= form.file_field :rup,   class: 'form-control' %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

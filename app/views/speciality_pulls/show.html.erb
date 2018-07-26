@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Key:</strong>
+  <%= @speciality_pull.key %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @speciality_pull.name %>
+</p>
+
+<p>
+  <strong>Оценочный лист:</strong>
+  <%= link_to "Оценочный лист", @speciality_pull.ocen_list.url(:original, false) %>
+</p>
+<%= link_to 'Edit', edit_speciality_pull_path(@speciality_pull) %> |
+<%= link_to 'Back', speciality_pulls_path %>

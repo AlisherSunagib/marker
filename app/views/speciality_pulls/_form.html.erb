@@ -1,0 +1,30 @@
+<%= form_with(model: speciality_pull, local: true) do |form| %>
+  <% if speciality_pull.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(speciality_pull.errors.count, "error") %> prohibited this speciality_pull from being saved:</h2>
+
+      <ul>
+      <% speciality_pull.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :key %>
+    <%= form.text_field :key %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <%= form.label "Оценочный лист" %>
+  <%= form.file_field :ocen_list %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

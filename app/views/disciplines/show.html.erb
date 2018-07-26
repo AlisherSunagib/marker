@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+<br/>
+<p>
+  <strong>Name:</strong>
+  <%= @discipline.name %>
+</p>
+
+<p>
+  <strong>University:</strong>
+  <%= @discipline.university %>
+</p>
+
+<p>
+  <strong>Speciality:</strong>
+  <%= @discipline.speciality %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @discipline.user %>
+</p>
+
+<p>
+  <strong>Estimation:</strong>
+</p>
+
+<% @uni = University.where(["key = ?", @discipline.university]).first %>
+
+<%= link_to 'Edit', edit_discipline_path(@discipline) %> |
+
+<% if current_user.role == "expert"%>
+<%= link_to 'Back', disciplines_path %>
+<%else%>
+<%= link_to 'Back', @uni %>
+<%end%>
